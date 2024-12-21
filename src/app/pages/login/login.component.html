@@ -1,0 +1,47 @@
+<div class="w-[400px] h-[500px] flex flex-col gap-2 p-11 bg-white rounded-lg shadow-xl">
+    @if (isLoginView) {
+        <h5 class="text-xl mb-2 font-bold text-reddishOrange">Login</h5>
+    <form action="" autocomplete="off" novalidate>
+        <div class="form-group mb-3">
+            <label class="formlabel" for="registerForm1">Email Address</label>
+            <input name="email" [(ngModel)]="loginObj.email" type="text" id="registerForm1" placeholder="Email Address" class="form-control" autocomplete="off">
+            @if (loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched) {
+                <span class="form-error">Email Address is required.</span>
+                }
+        </div>
+        <div class="form-group mb-3">
+            <label class="formlabel" for="registerForm2">Password</label>
+            <input name="password" [(ngModel)]="loginObj.password" type="password" id="registerForm2" placeholder="Password" class="form-control" autocomplete="off">
+            @if (loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched) {
+            <span class="form-error">Password is required.</span>
+            }
+        </div>
+        <button class="btn btn-secondary bg-reddishOrange text-white" type="button" (click)="onLogin()">Login</button>
+        <p>Don't have an account?
+            <button class="text-reddishOrange hover:text-blue-700 focus-outline-none p-0 m-0 align-baseline">
+                <a href="!#" class="link-info" (click)="isLoginView = false">Register here</a>
+            </button>
+        </p>
+    </form>
+    } @else {
+        <h5 class="text-xl mb-2 font-bold text-gray-900">Create Account</h5>
+        <form  autocomplete="off">
+            <div class="form-group mb-3">
+                <input name="email" [(ngModel)]="registerObj.email" type="text" id="registerForm1" placeholder="Email Address" class="form-control" autocomplete="off">
+                <label class="formlabel" for="registerForm1">Email Address</label>
+                @if (loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched) {
+                    <span class="form-error">Email Address is required.</span>
+                    }
+            </div>
+            <div class="form-group mb-3">
+                <input name="password" [(ngModel)]="registerObj.password" type="password" id="registerForm2" placeholder="Password" class="form-control" autocomplete="off">
+                <label class="formlabel" for="registerForm2">Password</label>
+                @if (loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched) {
+                    <span class="form-error">Password is required.</span>
+                    }
+            </div>
+            <button class="btn btn-secondary bg-reddishOrange text-white" type="button" (click)="onRegister()" (click)="isLoginView = true">Register</button>
+        </form>
+    }
+</div>
+
