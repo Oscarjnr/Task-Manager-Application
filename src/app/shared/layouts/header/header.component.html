@@ -1,21 +1,43 @@
 <header class="app-header flex flex-col bg-white shadow-md py-4">
   @if (!taskService.currentUser()) {
-    <div class="container mx-auto flex items-center justify-between px-32">
-      <h4 class="font-bold text-xl text-blue-900">Task Manager</h4>
-      <div class="relative" (clickOutside)="closeDropdown()" #dropdownContainer>
-        <button class="inline-flex items-center w-full rounded-md bg-reddishOrange px-4 py-3 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
-        id="menu-button" 
-        aria-expanded="true" 
-        aria-haspopup="true"
-        (click)="toggleDropdown()">
+    <div class="container mx-auto flex flex-wrap items-center justify-between px-4 sm:px-8 lg:px-32">
+      <h4 class="font-bold text-lg sm:text-xl text-blue-900">Task Manager</h4>
+      <div class="relative mt-4 sm:mt-0" (clickOutside)="closeDropdown()" #dropdownContainer>
+        <button
+          class="inline-flex items-center w-full sm:w-auto rounded-md bg-reddishOrange px-3 sm:px-4 py-2 sm:py-3 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+          id="menu-button"
+          aria-expanded="true"
+          aria-haspopup="true"
+          (click)="toggleDropdown()"
+        >
           Welcome
-          <svg class="ml-2 h-5 w-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+          <svg
+            class="ml-2 h-4 w-4 sm:h-5 sm:w-5 text-gray-600"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            />
           </svg>
         </button>
-        <div class="absolute left-0 z-10 mt-0 w-full rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" [class.hidden]="!isDropdownOpen">
+        <div
+          class="absolute left-0 z-10 mt-2 w-full sm:w-48 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          [class.hidden]="!isDropdownOpen"
+        >
           <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="menu-button">
-            <a href="#" class="block px-4 py-2 text-sm text-red-500 hover:bg-gray-100 hover:text-gray-900" role="menuitem" (click)="onLogout()">Logout</a>
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-red-500 hover:bg-gray-100 hover:text-gray-900"
+              role="menuitem"
+              (click)="onLogout()"
+            >
+              Logout
+            </a>
           </div>
         </div>
       </div>
